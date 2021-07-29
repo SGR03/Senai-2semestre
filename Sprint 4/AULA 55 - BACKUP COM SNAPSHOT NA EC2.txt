@@ -1,0 +1,88 @@
+*Uso da ferramenta EC2* 
+*PuTTY versão 0.75 (com o bits de acordo com o modelo da sua máquina)*
+
+
+1)executar instância
+  -linux 64 bits
+  -t2-micro
+  -colocar a sub rede na zona que está o volume, por exemplo (us-east-1c) 
+  -habilitar IP público
+  -adicionar um armazenamento (8 GIB), já vem como padrão
+  -adicionar tag  (Name) (ServerDisk-BitBeat)
+  -usa o mesmo grupo de segurança da aula passada ou cria um novo (com liberação SSH)
+  -usar o mesmo par de chave ou cria uma nova (mas tem que fazer o processo de converter ela para ppk)
+  -executa a instância
+
+
+2)copiar o endereço DNS ou ip no sistema da AWS
+
+
+  -abrir o Putty
+  -colar o ip na barra de ip
+  -save
+  -vai no connection, ssh, clica no auth
+  -abre o Browse
+  -e pega a chave.ppk 
+  -usa a mesma session que já tinha sido criada na aula anterior
+  -da um save
+  -open
+
+3)Volta na AWS
+
+  -clica em volumes
+  -clica com o botão direito do mouse no volume que já está lá da aula anterior
+  -atacha ele (attach)
+  -e clica no que aparece (ServerDisk-BitBeat)
+  -e atacha 
+
+
+4)putty
+
+  -ec2-user
+  -sudo su -
+  -fdisk -l 
+  -df -h ( mostra o que ta sendo utilizado)
+  -mkdir /mnt/disco2G (criar um diretório)
+  -mount /dev/xvdf1 /mnt/disco2G (verificar se montou o volume)
+  -dh -f  (visualizar o que está sendo usado)
+  -ls -la  /mnt/disco2G   (aparece o arquivo que foi feito na aula passada)
+  -cat /mnt/disco2G/arquivo.txt   (ver o que tem dentro do arquivo)
+
+
+5)fazer um backup*
+
+  -vai em volume
+  -seleciona o volume de 2GB
+  -clica com o botão direito do mouse
+  -create snapshot
+  -descrição (versao-com-dados)
+  -adiciona a tag (name)  (snapshot-25-05-2021-08-39)
+
+
+6)volta no putty
+
+  -rm /mnt/disco2G/arquivo.txt (deletar o arquivo)
+  -y (confirmar)
+
+
+7)restaurar os dados* *volta na AWS
+
+
+  -criar volume 2 GIB (mesma zona de acordo com os outros discos)
+  -(Name) (VolumeRestaurado)
+  -create volume
+  -atacha esse VolumeRestaurado na instância ServerDisk-BitBeat
+
+8)putty
+
+  -mkdir /mnt/disco2-restaurado (criar um diretório para montar o novo volume)
+  -mount /dev/xvdg1 /mnt/disco2-restaurado (monte o novo volume)
+  -ls -la /mnt/disco2-restaurado (visualizar o arquivo)
+  -cp /mnt/disco2-restaurado/arquivo.txt /mnt /disco2G/  (restaurar os dados)
+
+
+
+***encerrar instância***
+***apaga os snapshot***
+***apaga os volumes***
+***só deixa o de 2GB***

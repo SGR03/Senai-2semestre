@@ -1,0 +1,86 @@
+AULA 53 - ADD STORAGE NA EC2
+
+*Uso da ferramenta EC2* 
+*PuTTY versão 0.75 (com o bits de acordo com o modelo da sua máquina)*
+
+
+
+1)executar instância
+
+  -linux 64 bits
+  -t2-micro
+  -habilitar IP público
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  (Name) (ServerDados-BitBeat)
+  -usa o mesmo grupo de segurança da aula passada ( com liberação SSH)
+  -usar o mesmo par de chave 
+
+
+2)copiar o endereço DNS no sistema da AWS
+
+  -abrir o Putty
+  -colar o ip na barra de ip
+  -vai no connection, ssh, clica no auth
+  -abre o Browse
+  -e pega a chave.ppk
+  -volta em session
+  -coloca um nome pro sessions
+  -da um save
+  -open
+  -ec2-user
+  -sudo su -
+  -fdisk -l 
+
+3)olta nos volumes
+
+  -olha a zona que o disco estar armazenado
+  -cria 2 GIB na mesma zona
+  -coloca a tag (name) (NovoDisco-ServerWeb)
+  -seleciona o novo disco
+  -clica em attach volume
+  -aparece o nome da instância pra selecionar 
+  -attach
+
+4)volta no linux
+
+  -fdisk -l (reconhecer o disco)
+  -df -h (qual disco está em uso)
+  -fdisk /dev/xvdf (caminho do disco que está em uso)
+  -n  (novo disco)
+  -p  (partição primária)
+  -enter
+  -enter 
+  -enter (criou uma nova partição)
+  -w   (sair salvando)
+  -mkfs -t ext3 /dev/xvdf1  (formatar)
+  -mkdir /mnt/novo-disco (criar um diretório)
+  -mount /dev/xvdf1 /mnt/novo-disco ( associar a partição no novo grupo de montagem)
+  -df -h (qual disco está em uso)
+  -cd novo-disco
+  -vim /mnt/novo-disco/arquivo.txt
+  -I (inserir)
+  -edita ( escreve "ver se funcionou o backup")
+  -esc 
+  -:wq (pra salvar)
+
+
+
+O que é expansão vertical*
+  Colocando mais disco, um com 2GIB e outro com 4GIB
+O que é expansão horizontal*
+  Criar um disco de 2 GIB, posso restaurar em um disco de 4GIB, ou seja, extender o próprio disco
+O que é uma região*
+  território de um país ( Virginia )
+O que tem dentro desse território*
+  Pode ter 3 zonas ou mais, e nelas tem os data-centers 
+O que é um data-center dentro da AWS?*
+  um pedacinho de uma zona
+conjunto de data center*
+  uma zona
+conjunto de zona*
+  uma região
+
+
+***encerrar instância***
+***deletar volume do servidor***
+***deixa a dos dados***

@@ -1,0 +1,65 @@
+
+FSS - SERVIÇO DE ARQUIVO E ARMAZENAMENTO
+
+    * Armazenamento de disco para outros virtualizadores
+
+FS - DEFINIÇÃO
+
+    * O FS-File Server (Servidor de Arquivos) é um computador conectado a uma rede que tem o objetivo principal de proporcionar um local para o armazenamento e compartilhamento de 
+    arquivos que podem ser acessados ​​por todos que vinculados à rede.
+
+    * O serviço FS é um recurso do Windows Server que permite o gerenciamento de armazenamento e armazenamento de arquivos.
+
+    OBS: Qualquer usuário inserido na rede (que o administrador tenha liberado) pode acessar a pasta / armazenamento compartilhado
+
+    RAID 0 (desempenho) e RAID 1 (segurança de dados) = STORAGE conectado ao servidor
+        
+AWS
+
+    Prepare o ambiente, adicionando um novo disco
+
+    1) No painel do EC2
+    	- Armazenamento de Bloco Elástico> Volumes> Criar Volume
+    	- Tamanho (GiB): 2
+    	- ZD: us-east-1c
+    	- Nome | VolumeSrvArqDados
+
+    2) Atache este volume ao SrvArq ...
+    	- Selecione o volume> Ações> Anexar volume> id-da-sua-instância
+
+SERVIDOR WINDOWS
+
+    Kerberos - autenticação / identificação
+
+    1) Visualize os discos disponíveis
+    	- Gerenciador (localizado na barra de tarefa)> Este computador
+
+    2) Acesse o Gerenciamento de Disco
+    	- Pesquise 'Gerenciador do computador'> Gerenciamento de disco
+    				ou
+    	- Windows + R> diskmgmt.msc 
+
+    3) Clique com o botão direito sob o disco
+    	- Deixe ele online
+
+    4) Clique novamente com o botão direito no disco
+    	- Inicializar Disco
+    	- GPT
+    	- OK 
+
+    5) Clique novamente com o botão direito no disco
+    	- Novo Volume Simples ...
+    	- Avançar
+    	- Atribua uma letra para esta unidade
+    	- Formatar este volume ...
+    	- NTFS | Padrão
+    	- Rótulo do volume
+    	- Executar uma formatação rápida
+    	- Avançar
+    	- Concluir
+
+    6) Volte novamente ao Gerenciador> Este Computador 
+    	- O disco estará lá 
+
+    7) Pesquise 'Gerenciamento do Servidor'
+    	- Note que o FSS já está instalado (Serviços de Arquivo e Armazenamento)

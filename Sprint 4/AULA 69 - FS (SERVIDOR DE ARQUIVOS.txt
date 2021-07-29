@@ -1,0 +1,106 @@
+    Assunto: Manipular arquivos e pastas em um Compartilhamento de Arquivos no Windows Server
+    Objetivo: Saber como organizar arquivos e pastas em um sistema operacional Windows Server 2019. Diferenciando permissões de Compartilhamento e NTFS.
+
+SERVIDOR WINDOWS - SrvArqBitBeat
+
+    1) Monte a seguinte estrutura de diretório em sua unidade de disco (que foi criado na aula 68)
+
+        SENAI
+            Alunos_2RM
+                Bruna Landim
+                Suellen G Rufino
+
+            Alunos_2RT
+                Laura lima
+                Giovanna Araujo
+
+            Professores
+                Danilo Sibov
+
+    2) Na pasta 'SENAI', determinante como acesso de acesso para todos
+    - Botão direito sobre a pasta> Propriedade
+    - Compartilhamento> Compartilhamento Avançado 
+    - Selecione a caixa 'Compartilhar a pasta'
+    - Em 'permissões', marque 'Controle total', 'Alteração' e 'Leitura'
+    - OK
+    - Aplicar
+
+    3) Faça o teste
+    - Windows + R
+    - \\ localhost
+
+        Um macarrão clássico!
+
+SERVIDOR WINDOWS - SrvWinBitBeat
+
+    1) No Gerenciador de Arquivos, pesquise:
+    \\ SrvWinBitBeat.senai.edu.local
+
+    2) Clique com o botão direito sobre a pasta compartilhada ('SENAI')
+    - Mapear unidade de rede ...
+
+    3) Especifique uma unidade 
+    - Z: (por exemplo)
+    - Marque 'Reconectar-se na entrada'
+    - Concluir
+    
+    4) Agora um macarrão avançado no Gerenciador de Arquivos!
+
+				Continuação 
+
+    - Na AWS, libere seu IP válido nos grupos de segurança
+    - No Explorador de Arquivos do seu PC, digite \\ ip-do-servidor
+    - Logue com o usuário e uma senha
+    - Uma pasta compartilhada compartilhada!
+
+NTFS - NOVO SISTEMA DE ARQUIVOS DE TECNOLOGIA
+
+    Autoriza NTFS: Leitura, Gravar, Ler e Executar, Modificar, Controle Total e Especial
+    Aplicação: Unidades (E :, Z :, D :, etc), Pastas, subpastas e arquivos
+    Atribuição: Usuário e Grupo
+
+HERANÇA DE PERMISSÕES
+
+    * Uma pasta secundária, herdará como cumprimento da pasta primária
+    EX: D: / Dados / SENAI
+
+SERVIDOR WINDOWS - SrvArqBitBeat
+
+    1) Abra o Explorador de arquivos
+    - Botão direito sobre a massa SENAI
+    
+        Segurança> Avançadas> Desabilitar Herança> Conversor como condições herdadas ...
+
+    2) Remova os 'Usuários' desta pasta - que neste caso são definidas para um "usuário qualquer"
+
+    3) navegar as permissões - selecione os objetos de grupo
+    - Adicionar> selecionar uma entidade de segurança 
+    - Pesquise 'GP'> Verificar nomes
+    
+        NOTA: coloque o administrador 
+
+    - Relacionados os Grupos, com as seguintes características
+
+        Professores - controle total
+        Alunos manhhã e tarde - Ler ..., Listar ... e Leitura
+
+    4) A turma da tarde não pode acessar a pasta da manhã (vice-versa)
+    
+        - Siga o mesmo raciocínio da etapa 3
+
+    5) Os alunos não podem acessar uma pasta 'Professores'
+
+        - Siga o mesmo raciocínio da etapa 3
+
+    6) Apenas o usuário terá controle total sobre sua massa
+
+        - Siga o mesmo raciocínio da etapa 3
+
+    7) Faça o teste das condições!
+    - Logue com o usuário
+        EX: senai.edu.local \ susu.2rm
+
+    - Abra o Explorador de Arquivos
+        Pesquise \\ SrvArqBitBeat.senai.edu.local> Enter
+
+    - Mapeie esta unidade

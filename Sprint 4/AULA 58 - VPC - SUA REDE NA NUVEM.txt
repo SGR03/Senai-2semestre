@@ -1,0 +1,99 @@
+#ferramenta usada VPC#
+
+
+IAM (indentity and access management) 
+  regras e permissões que um usuário pode ter na nuvem
+
+Cloud formartion
+  linguagem de programação
+
+Multi-AZ Multi Avalaibility Zone
+  eu subo serviços: banco de dados, EC2, serviço de arquivos S3 em mais de uma área
+
+Auto-Scailing
+  aumento de maquinas aumático
+
+O que é VPC?*  *Virtual Private Cloud
+  rede virtual isolada logicamente, semelhante a vlan, só com o id gigantesco
+
+a VPC reserva 4 IPs, só posso ter uma VPC por zona, mas as zonas podem se unir/juntar
+  1 IP- reservado pra AWS - roteador
+  2 IP- DNS
+  3 IP- reserva
+  4 IP- reserva
+
+VPC que já vem da AWS
+
+  -entra na ferramenta VPC (Your VPCs)
+  -edita o name (VPC AWS) 
+  -entra na Subnets 
+  -nomeia cada IP, pra não confundir quando for criar um novo
+  -entra na Route Tables
+  -nomeia (rota da AWS)
+  -entra em internet gateways
+  -nomeia (GW-AWS)
+
+1)Criar uma nova VPC
+ OBS: vai ter uma subnet pública e uma privada, ambas na mesma área zone, e só uma com acesso a internet
+
+  -Your VPCs
+  -create VPC
+  -da um nome (MinhaRedeVirtual)
+  -endereço ip que vai adicionar: 10.0.0.0/16
+  -e cria 
+
+2)Vai em subnets
+
+  -create subnet
+  -pertence a (MinhaRedeVirtual)
+  -nome da VPC (SubnetPublica)
+  -pertence a área zone (us-east-1a)
+  -endereço de atuação pública: 10.0.1.0/24
+
+3)cria outra subnet
+
+  -create subnet
+  -pertence a (MinhaRedeVirtual)
+  -nome da VPC (SubnetPrivada)
+  -pertence a mesma área zone (us-east-1a)
+  -endereço de atuação pública: 10.0.2.0/24
+
+4)criar o gateway de internet
+
+  -create internet gateways
+  -nome do gateway (MeuGWdeInternet)
+  -depois de criado
+  -clica em actions (ação)
+  -atacha a uma VPC
+  -e atacha na (MinhaRedeVirtual)
+
+5)criar uma nova rota
+
+  -create route Tables
+  -name (RouteTable-Publica)
+  -associa na (MinhaRedeVirtual)
+  -e cria
+  -entra na RouteTable-Publica
+  -vai na aba (routes)
+  -vai na opção (editar rotas)
+  -adicionar rota 0.0.0.0 na opção (internet gateway) e aparece o GW que já foi criado (MeuGWdeInternet) 
+
+6)dentro da rota pública
+
+  -subnet associadas, vai em editar
+  -e marca a subnet pública
+  -salva
+
+7)criar uma nova rota
+
+  -create route Tables
+  -name (RouteTable-Privada)
+  -associa na (MinhaRedeVirtual)
+  -e cria
+  -entra na RouteTable-Privada
+
+8)dentro da rota privada*
+
+  -subnet associadas, vai em editar
+  -e marca a subnet privada
+  -salva

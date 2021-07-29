@@ -1,0 +1,30 @@
+#Ferramenta utilizada  (EC2)
+
+1)Criar máquina virtual
+  -executar instância
+  -linux 64 bits
+  -t2-micro
+  -com IP público
+  -colocar um bootstraping do tipo apache (código de automatização)
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  
+  -grupo de segurança 
+  -quando executar, crie uma chave de segurança
+
+2)Depois de criada
+
+  -Instância já vem com ip público (endereço público) e com ip privado (rede interna)
+  -Mostra também o DNS cedido pela AWS
+
+3)Como editar regras de segurança
+
+  -Grupo de segurança 
+  -Regras de entrada ( edita ela )
+  -Adicionar regra
+  -Adiciona porta HTTP e HTTPS além da que já vem como padrão (SSH)
+  -Depois que adicionou as porta HTTP e HTTPS, já consegue acessar o site com o ip público.
+
+
+
+***encerrar a instância para não gastar o dinheiro da AWS***
+***apagar o volume para não gastar o dinheiro da AWS***

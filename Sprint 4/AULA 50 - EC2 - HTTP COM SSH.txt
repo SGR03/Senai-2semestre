@@ -1,0 +1,63 @@
+*Uso da ferramenta EC2* 
+*PuttyGen (com o bits de acordo com o modelo da sua máquina)*
+*PuTTY versão 0.75 (com o bits de acordo com o modelo da sua máquina)*
+
+1) executar instância
+
+ -linux 64 bits 
+ -t2-micro
+ -habilitar IP público
+ -colocar um bootstraping do tipo apache (código de automatização)
+ -adicionar um armazenamento (8 GIB)
+ -adicionar tag  (Name) (ServidorWeb-PraticaSSH)
+ -usa o mesmo grupo de segurança da aula passada 
+ -quando executar, usar a mesma chave da aula passada
+
+OBS: O putty não aceita a extençao da chave.pem, tem que converte para modo chave.ppk.
+
+Como mudar?
+
+ -entrar no puttygen
+ -da um load
+ -achar onde ta a chave (geralmente fica no dowloads)
+ -não vai aparecer na hora, precisa habilitar o All Files
+ -seleciona a chave modo.pem e importa ela
+ -salva chave privada(private)
+ -salva com o mesmo nome que o anterior, mas não coloca extenção
+ -agora fica a chave como ppk
+
+
+2) Pegar o ip público da intância da AWS
+
+ -entrar no putty 
+ -colar o ip na barra de ip
+ -vai no connection, ssh, clica no auth
+ -abre o Browse
+ -e pega a chave.ppk
+ -volta em session
+ -coloca um nome pro sessions
+ -da um save
+ -open
+
+3) Vai aparecer uma mensagem, pedindo pra fazer uma troca/cruzamento de chave pública e privadas*
+
+ -só aceitar, e consegue acessar o putty
+ -usuário padrão ec2-user
+ -não pede senha, porque já tem a chave privada
+ 
+4) editar o arquivo dentro do putty
+
+ sudo su -
+ vim /var/www/html/index.html
+ aperta a tecla I, edita o arquivo
+ da um esc, pra sair do I
+ da um :x  pra salvar e enter
+
+5) ativar a alteração
+
+ systemctl restart httpd 
+
+ vai na página de internet, coloca seu ip público, e a mensagem já vai aparecer diferente ou modificada
+
+**Encerrar a intância**
+**deletar o volume**

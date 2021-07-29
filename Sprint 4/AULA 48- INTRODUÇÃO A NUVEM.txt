@@ -1,0 +1,47 @@
+1)Objetivo do curso 
+
+  -Definir a Nuvem AWS;
+  -Explicar a filosofia de definição de preço da AWS;
+  -Identificar os componentes de infraestrutura global da AWS;
+  -Descrever as medidas de segurança e conformidade da Nuvem AWS, incluindo o AWS Identity and Access Management (IAM);
+  -Criar uma AWS Virtual Private Cloud (Amazon VPC);
+  -Demonstrar quando usar o Amazon Elastic Compute Cloud (EC2), o AWS Lambda e o AWS Elastic Beanstalk;
+  -Diferenciar o Amazon S3 do Amazon EBS, Amazon EFS e Amazon S3 Glacier;
+  -Demonstrar quando usar os serviços de banco de dados da AWS, incluindo o Amazon Relational Database Service (RDS), o Amazon DynamoDB, o Amazon Redshift e o Amazon Aurora;
+  -Explicar os princípios básicos da arquitetura da Nuvem AWS;
+  -Explorar os principais conceitos relacionados ao Elastic Load Balancing (ELB), Amazon CloudWatch e Auto Scaling.
+
+2)Módulos do curso
+
+  Módulo 1: Visão geral dos conceitos de nuvem
+  Módulo 2: Economia e faturamento da nuvem
+  Módulo 3: Visão geral da infraestrutura global da AWS
+  Módulo 4: Segurança na Nuvem AWS
+  Módulo 5: Redes e entrega de conteúdo
+  Módulo 6: Computação
+  Módulo 7: Armazenamento
+  Módulo 8: Bancos de dados
+  Módulo 9: Arquitetura de nuvem
+  Módulo 10: Auto Scaling e monitoramento
+
+O que é nuvem?
+
+  -Armazenamento de arquivos, conjunto de data-centers sempre conectados a internet, banco de dados
+
+O que é computação de nuvem?
+
+  -Entrega de recursos de TI sob demanda por meio da internet
+
+Modelos de serviço nuvem
+
+IaaS  (Infraestrutura como serviço)
+
+  -Recursos de hardware como capacidade de processamento, impressão, áreas de armazenamento como serviços de rede
+
+PaaS (Platarforma como serviço)
+
+  -Serviço de hospedagem e implementação de hardware e software, usado para prover aplicações por meio da internet
+
+Saas (software como serviço)
+
+  -Responsável pela infraestrutura necessária á disponibilização do sistema, e o cliente utiliza o software via internet.

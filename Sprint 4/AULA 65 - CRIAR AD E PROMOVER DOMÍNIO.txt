@@ -1,0 +1,49 @@
+Active Directory 
+    -produto exclusivo da Microsolft 
+    -melhor software para gerenciamento
+    -é recomendado criar um backup para o AD
+
+FQDN (Fully Qualified Domain Name)
+    -especifica o local exato de um computador
+dentro da hierarquia do domínio.
+
+
+1)Fazer acesso remoto na área de trabalho
+    -Conexão de área de trabalho remota
+    -coloca o ip público da instância
+    -entra como usuário (administrator)
+    -e coloca a senha fornecida pela AWS
+
+2)Gerenciador de servidor 
+    -adicionar funções e recursos
+    -instalação baseada em funções e recursos 
+    -serviços de Domínio Active Directory (marca essa opção)
+    -serviço de acesso e política de Rede (marca essa opção)
+    -instala e reinicia a máquina
+
+3)Faz a conexão novamente 
+    -gerenciador de servidor
+    -vai mostrar os novos recursos adicionados
+    -se caso vim as novas funções em vermelho, é porque demorou a iniciar a máquina novamente, ai tem que carregar na mão
+    -vai aparecer uma notificação a parte superior da tela 
+    -clica nele na opção "recursos..." (está em azul)
+    
+4)Configuração de implatação 
+    -adicionar uma nova floresta 
+    -nome do domínio (senaiedu.local)
+    -senha do AD (Senai@132)
+    -faz um snapshot do volume antes de criar o domínio e colocar a senha
+    -instala e reinicia a máquina 
+
+5)Faz a conexão novamente no acesso remoto
+    -loga com o senaiedu\administrator
+    -aparece um aviso, coloca não exibir mais e da um "sim"
+    -vai no " meu computador" 
+    -clica com o botão direito do mouse "propriedades"
+    -da um windows + r "ncpa.cpl"
+    -você vai ver que na conexão de rede o DNS não vai aparecer 
+    -edite o DNS para o IP que foi colocado no servidor (192.168.0.10)
+    -os usuários foram para "Usuários e Computadores do Active Directory"
+
+OBS: não mexa nos IPs dentro dos servidores 
+OBS: os servidor pode ter vários domínios 

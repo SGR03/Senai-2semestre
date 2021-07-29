@@ -1,0 +1,90 @@
+*Uso da ferramenta EC2* 
+*PuTTY versão 0.75 (com o bits de acordo com o modelo da sua máquina)*
+
+
+1)executar instância
+  -linux 64 bits
+  -t2-micro
+  -colocar a sub rede na zona que está o volume por exemplo (us-east-1c) 
+  -habilitar IP público
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  (Name) (NovoServerDados-BitBeat)
+  -usa o mesmo grupo de segurança da aula passada ou cria um novo (com liberação SSH)
+  -usar o mesmo par de chave ou cria uma nova (mas tem que fazer o processo de converter ela para ppk)
+  -executa a instância
+
+
+2)copiar o endereço DNS ou ip no sistema da AWS
+
+
+  -abrir o Putty
+  -colar o ip na barra de ip
+  -save
+  -vai no connection, ssh, clica no auth
+  -abre o Browse
+  -e pega a chave.ppk
+  -usa a mesma session que já tinha sido criada na aula anterior
+  -da um save
+  -open
+  -ec2-user
+  -sudo su- (entrar no root)
+  -fdisk -l  (listar os dicos)  ou fdisk -l |grep "Disk /" ( pra filtrar o disco mais fácil, quando tiver muitos)
+
+
+3)Volta na AWS
+
+  -clica em volumes
+  -novo-volume
+  -atacha ele (attach)
+  -e clica no que aparece
+  -e atacha 
+
+
+4)putty
+
+  -sudo su -
+  -fdisk -l |grep "Disk /"   ( agora aparece os dois volumes)
+  -df -h ( mostra o que ta sendo utilizado)
+  -mkdir /mnt/disco2G (criar um diretório)
+  -mount /dev/xvdf1 /mnt/disco2G (verificar se montou o volume)
+  -dh -f  (visualizar o que está sendo usado)
+  -ls -la  /mnt/disco2G   (aparece o arquivo que foi feito na aula passada)
+  -cat /mnt/disco2G/arquivo.txt   (ver o que tem dentro do arquivo)
+
+5)simulação de uma troca de disco na nuvem de 2 pra 4 GIB
+
+  -vai em volume
+  -criar novo volume de 30 GIB
+  -colocar na mesma zona que os outros volumes
+  -name  (NovoVolume30GBServerWeb)
+  -create volume
+  -clica no volume e atacha ele
+
+6)volta no putty
+
+  -sudo su -
+- fdisk -l |grep "Disk /"  (agora aparece o volume de 30GB) (ele não ta formatado)
+
+7)formatar o disco de 30 GIB
+
+  -fdisk /dev/xvdg
+  -n  (novo disco)
+  -p  (partição primária)
+  -enter
+  -enter 
+  -enter (criou uma nova partição)
+  -w  (sair salvando)
+  -mkfs -t ext3 /dev/xvdg1  (formatar)
+  -fdisk -l (verificar a partição)
+  -mkdir /mnt/novo-disco30G (criar um ponto de montagem)
+  -mount /dev/xvdg1 /mnt/novo-disco30G  (verificar se montou o volume)
+
+
+OBS: Como faço para fazer backup do disco 2GB, para o de 30
+
+  -cp -a /mnt/sico2G/ * /mnt/novo-disco30G/  (o -a, é para deixar o dono e a data original do arquivo)
+
+
+***encerrar instância***
+***deletar volume de 30GB***
+***deixa o volume de 2GB***

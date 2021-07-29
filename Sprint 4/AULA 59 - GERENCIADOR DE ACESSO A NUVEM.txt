@@ -1,0 +1,33 @@
+#ferramenta usada VPC#
+#ferramenta usada EC2#
+
+1)executar instância
+  -linux 64 bits
+  -t2-micro
+  -Rede: MinhaRedeVirtual
+  -habilitar IP público
+  -Subnet-Pública
+  -reserva um IP: 10.0.1.30
+  -adiciona um BOOTSTRAPING
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  (Name) (EC2-MinhaVPC)
+  -cria um grupo de segurança (Servidor-WEB-ACL), com acesso a SSH, HTTP e HTTPS
+  -quando executar, usar a mesma chave 
+
+
+2)Pegar o ip público da intância da AWS
+
+  -entrar no putty 
+  -colar o ip na barra de ip
+  -vai no connection, ssh, clica no auth
+  -abre o Browse
+  -e pega a chave.ppk
+  -volta em session
+  -coloca um nome pro sessions
+  -da um save
+  -open
+  -ec2-user
+
+3)volta no console da AWS*
+  -encerra a instância
+  -deleta o volume também

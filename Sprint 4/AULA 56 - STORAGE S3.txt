@@ -1,0 +1,57 @@
+#Uso da ferramenta S3# 
+
+
+O Amazon Simple Storage Service (Amazon S3) é um serviço de armazenamento de
+objetos que oferece escalabilidade, disponibilidade de dados, segurança e
+performance líderes do setor. Isso significa que clientes de todos os tamanhos e setores podem usá-lo para
+armazenar qualquer volume de dados em vários casos de uso.
+
+
+1)acessa o aws educate
+
+ -acessa o painel S3
+ -criar uma bucket
+ -colocar um nome (suellen-rufino) não pode coloca  espaço e nem acento   
+ -região da virginia (gratuito)
+ -bloqueia todos os acessos públicos
+ -versionamento da bucket (ativado)
+ -criptografia (desativar)
+ -cria
+ -clica na bucket que foi criada
+ -criar uma pasta dentro da bucket com o nome (Assinaturas)
+ -criar pasta
+ -dentro da bucket, tem uma pasta que acabou de ser criada
+ -clica na pasta (Assinaturas) 
+ -carrega um arquivo, clicando no botão carregar
+ -adiciona um arquivo (vai ser uma assinatura feita pelo professor)
+ -clicando no objeto mostra todas as propriedades, inclusive a URL
+ -entrando no link da URL, você não consegue acessar a página, porque ta bloqueado
+ 
+2)Para desbloquear
+
+ -clica na bucket
+ -permissões
+ -bloqueio de acesso público (editar)
+ -desativar tudo
+ -salvar as alterações
+ -e confirma
+ -entra na assinatura
+ -e vai na permissões dela 
+ -clica em editar acl
+ -no acesso público habilita só pra leitura
+ -salva as alterações
+ -agora consegue accessar a URL da assinatura 
+
+3)excluir a bucket*
+
+ -vai onde se localiza as buckets
+ -seleciona sua bucket
+ -entra na pasta de Assinaturas
+ -excluir 
+ -depois volta na bucket 
+ -exclui ela 
+ -confiuração de bucket vazio
+ -exclui permanentemente
+
+OBS:trafegar arquivo dentro da AWS não tem custo nenhum, armazenar arquivo tem custo, e fazer downloads custa caro.
+OBS:O tráfego de saída de todos os seus arquivos tem custo

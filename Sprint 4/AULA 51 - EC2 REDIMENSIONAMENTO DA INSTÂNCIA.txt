@@ -1,0 +1,42 @@
+Objetivo
+
+Construir um servidor da web em nuvem
+Usar o par de chaves existente
+SSH na instância Amazon Elastic Compute Cloud (EC2)
+Redimensionar o Servidor
+
+
+
+1) executar instância
+
+  -linux 64 bits
+  -t2-micro
+  -habilitar IP público
+  -colocar um bootstraping
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  (Name) (ServidorWeb-PraticaSSH)
+  -usa o mesmo grupo de segurança da aula passada 
+  -quando executar, usar a mesma chave da aula passada
+
+
+OBS: Você usou uma instância t2.micro, mas quais são algumas outras maneiras de economizar nos
+custos de inicialização?
+
+  -No EC2 Console, clique em Instâncias na navegação à esquerda.
+  -Selecione sua instância em execução
+  -No topo da tela, clique em Estado da Instância > Interromper Instancia.
+  -Sua instância desligará normalmente e, em seguida, parará de funcionar. Confirme o Estado
+  da instancia se esta como Interrompido
+
+2)Otimizando os custos - Redimensione sua instância
+
+  -Com a Instância selecionada clique em Ações, selecione Configurações da Instância >Alterar tipo da instância
+  -veja que está como tc.micro, altere para t2,small
+  -clica em aplicar
+  -confirma se ela foi alterada
+  -inicia a instância
+  -e já pode acessae o navegador com o novo endereço de ip público
+
+
+Você pode usar SSH em sua nova instância t2:small usando o mesmo par de chaves e
+comandos SSH usados antes

@@ -1,0 +1,79 @@
+*Uso da ferramenta EC2* 
+*PuTTY versão 0.75 (com o bits de acordo com o modelo da sua máquina)*
+*Putty.gem (com o bits de acordo com o modelo da sua máquina)
+
+1) executar instância
+  -linux 64 bits
+  -t2-micro
+  -habilitar IP público
+  -adicionar um armazenamento (8 GIB)
+  -adicionar tag  (Name) (Seguranca)
+  -usa o mesmo grupo de segurança da aula passada 
+  -usar o mesmo par de chave 
+
+2) copiar o endereço ipv4 público (AWS)*
+
+  -abrir o putty
+  -clicar na maquina que foi criada na aula anterior
+  -da um load
+  -trocar o ip, colocar o que foi copiado do sistema da AWS
+  -da um save 
+  -open
+  -sim ( pra trocar a chave)
+
+3)acessar o putty*
+
+  -usuário: ec2-user
+  -cat /home/ec2-user/.ssh/authorized_keys
+
+4)entra na AWS
+
+  -rede de segurança> pares de chave
+  -criar um par de chaves 
+  -Nome (Suellen_Guedes_Rufino)
+  -formato ppk
+  -adiconar uma tag (USER_SGR)
+  -criar
+  -salva automaticamente na pasta downloads
+
+5)acessar o putty.gem
+
+  -load
+  -pasta onde ta o arquivo, abre
+  -save pública
+  -colocar o mesmo nome e adicionar o chpu  
+  -salvar
+
+6)gerenciador de arquivos
+
+  -downloads
+  -vai na chave que foi criada e clica com o botão direito do mouse
+  -abrir com
+  -bloco de notas
+  -no bloco de notas, tira o espaço entre as palavras (quebra de linha)
+
+7)volta no putty
+
+  -sudo vi /home/ec2-user/.ssh/authorized_keys
+  -enter 
+  -aperta a tecla o
+  -coloca ssh-rsa da um espaço e cola o que estava no bloco de notas ( sem os espaços )
+  -da um esc duas vezes 
+  -shift :
+  -x
+  -enter
+  -sudo systemctl restart sshd
+  -botão direito do mouse, em nova sessão
+
+8)volta na AWS
+
+  -copia o ip público
+  -e cola na nova sessão do putty
+  -da um nome 
+  -da um save
+  -connection > SSH > Auth > Browse > chave ppk
+  -volta em session 
+  -da um save
+  -open
+  -coloca o usuário: ec2-user
+  -consegue acessar

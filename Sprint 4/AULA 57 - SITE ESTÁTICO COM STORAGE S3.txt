@@ -1,0 +1,34 @@
+#Uso da ferramenta S3# 
+
+OBS: O site estático virá em .zip, vai ter que extrair ele 
+
+1)AWS academy
+
+  -entra na ferramenta S3
+  -criar bucket e da um nome pra ela
+  -já desbloqueia todos os acessos públicos da bucket
+  -criar a bucket
+  -depois de criada entra na bucket
+  -e arrasta a pasta que foi extraída, nos arquivos da bucket
+  -dentro de permissões (seleciona: o conceder acesso público de leitura )
+  -carrega os arquivos (carregar)
+  -seleciona a bucket
+  -clica em propriedades 
+  -aparece hospedagem de site estático
+  -clica nele, edita
+  -ativa a hospedagem em site estático
+  -no documento de índice, coloque (index.html)
+  -salva as alterações
+  -aparece o link de acesso do site lá no final da página
+
+
+2)Exclui a bucket
+
+  -vai onde se localiza as buckets
+  -seleciona sua bucket
+  -entra na pasta de Assinaturas
+  -excluir 
+  -depois volta na bucket 
+  -exclui ela 
+  -confiuração de bucket vazio
+  -exclui permanentemente
