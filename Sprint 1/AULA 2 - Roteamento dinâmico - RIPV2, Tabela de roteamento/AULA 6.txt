@@ -1,0 +1,40 @@
+Roteamento Dinâmico
+
+
+Defaut gateway = gateway padrão: tudo que não for encontrado na rede local, ele encaminha para o gateway padrão 
+
+        -especifica: ao invés de encaminhar tudo, eu encaminho apenas um trecho; ip route 192.168.3.0 
+        -padrão:ip route  0.0.0.0 0.0.0.0
+
+Rotamento estático: Rede pequena, fácil de implantar, as rotas permanecem sempre a mesma
+Roteamento dinamico: Rede grande, melhor para gerenciamento, funciona em qualquer tipo de rede e são escaláveis 
+
+Solução Rota estática 
+
+SP
+en
+conf t
+int g0/0
+ip add 192.168.0.1 255.255.255.0
+no shut
+exit
+int g0/1
+ip add 192.168.1.1 255.255.255.0
+no shut
+exit
+ip route 192.168.3.0 255.255.255.0 g0/1
+
+
+	RIO
+en
+conf t
+int g0/0
+ip add 192.168.3.1 255.255.255.0
+no shut
+exit
+int g0/1
+ip add 192.168.1.2 255.255.255.0
+no shut
+exit
+ip route 192.168.0.0 255.255.255.0 192.168.1.1
+

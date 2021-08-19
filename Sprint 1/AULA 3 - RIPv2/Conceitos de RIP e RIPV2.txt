@@ -1,0 +1,40 @@
+Protocolo de roteamento dinâmico 
+
+RIP: utilizado em redes de pequeno porte
+    -O Protocolo de Roteamento Dinâmico RIP (Routing Information Protocol) foi criado com o objetivo de oferecer informações sobre o roteamento e acessibilidade de suas redes locais.
+    -protocolo de roteamento interno, com vantagem de ser fácil de configurar 
+
+
+Ao ficar online, o roteador transmite uma mensagem de requisição (Request Message) em broadcast para todas as interfaces RIP. Todos os roteadores vizinhos que recebem essa mensagem, a encaminham de volta (Response Message) contendo suas respectivas tabelas de roteamento
+
+Assim que o roteador recebe a tabela de roteamento, processa cada entrada da tabela seguindo as regras:
+
+Se não existem entradas de rotas que correspondem à recebida, então a entrada é adicionada, de forma automática, à tabela de roteamento, juntamente com as informações sobre o roteador que recebeu a tabela de roteamento;
+Se existirem entradas que correspondem à recebida, mas a contagem de saltos (hop) é menor do que a que está em sua tabela de roteamento, então a tabela é atualizada com a nova rota;
+Se existirem entradas que correspondem à recebida, mas a contagem de saltos (hop) é maior do que a que está em sua tabela de roteamento, então a tabela é atualizada com contagem de saltos (hop) de 16 (hop infinito). Os pacotes ainda são encaminhados à antiga rota. Um temporizador hold-down é disparado e todas as atualizações daquela rota, vindas de outros roteadores, são ignoradas/descartadas. Se após o término do temporizador, o roteador ainda está alertando sobre a contagem maior de saltos (hop), então o valor é atualizado dentro de sua tabela de roteamento. Somente após o fim do temporizador, as atualizações dos outros roteadores são aceitas para aquela rota.
+
+Diferenças entre versão 1 e 2
+
+O RIP-1 não é um protocolo seguro, pois qualquer host que envie pacotes da porta 520 do UDP é considerado um roteador por seus vizinhos tendo, portanto, estas informações por eles processadas.
+
+O RIP-2 dispõe de um esquema de autenticação através de um comando de especificação no pacote. A autenticação utiliza o espaço de uma entrada, sendo que a função dos campos são alteradas:
+
+O RIP-1 enviava seus pacotes para todos os nós do cabo. Isto fazia com que não só roteadores recebessem mas também por hosts que estavam no mesmo cabo, o que sobrecarregava muito a rede.
+
+O RIP-2 resolve este problema definindo um IP classe D para endereço multicast: 224.0.0.9
+
+Comandos do RIP
+
+#Entrar nas configurações e ativar o RIP
+(config)# router rip
+
+Mudar versão
+(config-router)# version 2
+
+Apagar configuração e desativar o RIP
+(config)# no router rip
+
+(config-router)#passive-interface g0/0
+
+Exibe as rotas do RIP
+# show ip route rip
